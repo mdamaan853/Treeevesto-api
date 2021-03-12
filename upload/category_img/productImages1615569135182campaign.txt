@@ -1,0 +1,6 @@
+1. Modal image for campaign select type
+2. sms preview 
+3. event  search api
+4. segment search api
+4. DTO Form post api
+5. email  attachement

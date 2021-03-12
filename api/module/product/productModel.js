@@ -10,7 +10,7 @@ const productschema = new mongoose.Schema({
     required: [true, "Desc name required"],
   },
   productImages: {
-    type: String,
+    type: Array,
     required: [true, "images required"],
   },
   productType: {
@@ -30,9 +30,6 @@ const productschema = new mongoose.Schema({
   },
   endSale: {
     type: Date,
-  },
-  productUrl: {
-    type: String,
   },
   buttonText: {
     type: String,

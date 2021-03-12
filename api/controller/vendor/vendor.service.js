@@ -21,6 +21,16 @@ module.exports = ({
         return res(null,data)
     })
 },
+
+// loginVendor: (req, res) => {
+//     vendorModel.find().exec((err, data) => {
+//         if (err) {
+//             return res(err);
+//         }
+//         return res(null, data[0])
+//     })
+// },
+
 getAllVendor: (req, res) => {
     vendorModel.find().exec((err, data) => {
         if (err) throw err;

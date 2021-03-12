@@ -4,7 +4,7 @@ module.exports = ({
      new productModel({
         productName: req.body.productName,
         productDesc: req.body.productDesc,
-        productImages: req.files.productImages,
+        productImages: req.body.productImages,
         productType: req.body.productType,
         regularPrice: req.body.regularPrice,
         sellingPrice: req.body.sellingPrice,

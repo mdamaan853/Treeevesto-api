@@ -3,10 +3,14 @@ const { hashSync, compareSync } = require('bcrypt')
 module.exports = ({
     createProducts:(req, res) => {
         if(req.files){
-            console.log(req.files.path)
-        }
-            createProduct(req, (err, data) => {
+            req.body.productImages=req.files.map(element => {
+                return element.path
+            });
+            console.log(req.body.productImages)
+            }  
+          createProduct(req, (err, data) => {
                 if (err) {
+                    res.status(500)
                     res.json({
                         success: 0,
                         msg: "error while inserting " + err
