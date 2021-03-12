@@ -4,6 +4,8 @@ const multer = require('multer')
 
 const { createProducts,getAllProducts,getProductsById } = require('./product.controller')
 
+const auth = require('../../middleware/auth')
+
 const storage = multer.diskStorage({
     destination: './upload/category_img',
     filename: (req, file, cb) => {
@@ -16,7 +18,7 @@ const upload = multer({
 
 router.post('/product', upload.array('productImages', 12),createProducts);
 
-router.get('/product',getAllProducts);
+router.get('/product',auth,getAllProducts);
 
 router.get('/product/:id',getProductsById);
 

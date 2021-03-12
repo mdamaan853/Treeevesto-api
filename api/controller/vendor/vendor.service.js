@@ -22,14 +22,14 @@ module.exports = ({
     })
 },
 
-// loginVendor: (req, res) => {
-//     vendorModel.find().exec((err, data) => {
-//         if (err) {
-//             return res(err);
-//         }
-//         return res(null, data[0])
-//     })
-// },
+loginVendor: (req, res) => {
+    vendorModel.find({phone:req.body.phone}).exec((err, data) => {
+        if (err) {
+            return res(err);
+        }
+        return res(null, data[0])
+    })
+},
 
 getAllVendor: (req, res) => {
     vendorModel.find().exec((err, data) => {

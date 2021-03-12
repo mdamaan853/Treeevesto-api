@@ -1,4 +1,5 @@
-const {createVendor, getAllVendor,getVendorById} = require('./vendor.service')
+const {createVendor, getAllVendor,getVendorById,loginVendor} = require('./vendor.service')
+const jwt = require('jsonwebtoken')
 const { hashSync, compareSync } = require('bcrypt')
 module.exports = ({
     createVendors:(req, res) => {
@@ -25,6 +26,44 @@ module.exports = ({
             })
         }
     },
+
+    loginVendors:(req,res)=>{
+loginVendor(req,(err,data)=>{
+    if (err) {
+        res.json({
+            success: 0,
+            msg: "error while login " + err
+        })
+    }
+    if (!data) {
+        res.json({
+            success: 0,
+            msg: "you have not regestred yet"
+        })
+    } else {
+        var result = compareSync(req.body.password, data.password)
+        if (result) {
+            var token = jwt.sign({
+                email: data.email,
+                mobile: data.mobile
+            }, 'mySecretKey', {
+                expiresIn: '24h'
+            })
+            res.json({
+                success: 0,
+                msg: "you are loggedin",
+                token: token
+            })
+        } else {
+            res.json({
+                success: 0,
+                msg: 'invalid credentials'
+            })
+        }
+    }
+})
+    },
+
     getAllVendors: (req, res) => {
         getAllVendor(req, (err, data) => {
             if (err) {

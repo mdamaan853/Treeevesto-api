@@ -23,18 +23,18 @@ const vendorschema = new mongoose.Schema({
     },
     pickupAddress:{
        type:String,
-       required:true,
-       description:"Pickup address is required"
+    //    required:true,
+    //    description:"Pickup address is required"
     },
     pincode:{
        type:String,
-       required:true,
-       description:"Pickup address is required"
+    //    required:true,
+    //    description:"Pickup address is required"
     },
 completeAddress:{
        type:String,
-       required:true,
-       description:"Complete address is required"
+    //    required:true,
+    //    description:"Complete address is required"
     },
 gstNo:{
        type:String
