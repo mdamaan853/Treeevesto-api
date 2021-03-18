@@ -8,7 +8,7 @@ module.exports = ({
         imgUrl: req.file.path,
         parentCatId: req.body.parentCatId,
         productId: req.body.productId,
-        metaKeyword:req.body.metaKeyword ,
+        metaKeyword:req.body.metaKeyword,
         }).save((err, data) => {
         if (err){
             console.log('error...'+err)
