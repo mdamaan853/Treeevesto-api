@@ -44,6 +44,12 @@ getVendorById: (req, res) => {
         return res(null,data)
     })
 },
+updateVendorById: (req, res) => {
+    vendorModel.update({_id:req.params.id},{$set:req.body}).exec((err, data) => {
+        if (err) throw err;
+        return res(null,data)
+    })
+},
 deleteVendorById: (req, res) => {
     vendorModel.deleteOne({_id:req.params.id}).exec((err, data) => {
         if (err) throw err;
