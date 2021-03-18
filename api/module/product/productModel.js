@@ -1,6 +1,18 @@
 const { string } = require("joi");
 const mongoose = require("../mainDB");
 const productschema = new mongoose.Schema({
+  vendorId: {
+    type: String,
+    required: [true, " vendorId required"],
+  },
+  catId: {
+    type: String,
+    required: [true, " catId required"],
+  },
+  subcatId: {
+    type: String,
+    required: [true, " subcatId required"],
+  },
   productName: {
     type: String,
     required: [true, " name required"],
