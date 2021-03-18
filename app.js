@@ -13,7 +13,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended: false }))
 app.use(cors());
 // app.use(express.urlencoded({ extended: false }));
-
+app.use('/upload/category_img/:id',(req,res)=> res.sendFile(__dirname + '/upload/category_img/'+req.params.id));
+app.use('/upload/users_img/:id',(req,res)=> res.sendFile(__dirname + '/upload/users_img/'+req.params.id));
+// app.use(express.static('upload'))
 app.use('/',catRouter)
 app.use('/',vendorRouter)
 app.use('/',productRouter)

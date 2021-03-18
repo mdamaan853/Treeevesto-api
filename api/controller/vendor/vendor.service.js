@@ -2,6 +2,7 @@ const vendorModel = require('../../module/vendor/vendorModel')
 module.exports = ({
     createVendor: (req, res) => {
      new vendorModel({
+        vendorId: req.body.vendorId,
         name: req.body.name,
         phone: req.body.phone,
         email: req.body.email,
@@ -42,5 +43,12 @@ getVendorById: (req, res) => {
         if (err) throw err;
         return res(null,data)
     })
+},
+deleteVendorById: (req, res) => {
+    vendorModel.deleteOne({_id:req.params.id}).exec((err, data) => {
+        if (err) throw err;
+        return res(null,data)
+    })
 }
+
 })

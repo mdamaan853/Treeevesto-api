@@ -2,6 +2,9 @@ const productModel = require('../../module/product/productModel')
 module.exports = ({
     createProduct: (req, res) => {
      new productModel({
+        vendorId: req.body.vendorId,
+        catId: req.body.catId,
+        subcatId: req.body.subcatId,
         productName: req.body.productName,
         productDesc: req.body.productDesc,
         productImages: req.body.productImages,
@@ -39,8 +42,20 @@ getAllProduct: (req, res) => {
         return res(null,data)
     })
 },
+getProductsBySubCategory: (req, res) => {
+    productModel.find({subcatId:req.params.id}).exec((err, data) => {
+        if (err) throw err;
+        return res(null,data)
+    })
+},
 getProductById: (req, res) => {
     productModel.find({_id:req.params.id}).exec((err, data) => {
+        if (err) throw err;
+        return res(null,data)
+    })
+},
+deleteProductById: (req, res) => {
+    productModel.deleteMany().exec((err, data) => {
         if (err) throw err;
         return res(null,data)
     })

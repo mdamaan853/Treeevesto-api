@@ -16,6 +16,12 @@ module.exports = ({
         return res(null,data)
     })
 },
+getAll: (req, res) => {
+    catModel.find().exec((err, data) => {
+        if (err) throw err;
+        return res(null,data)
+    })
+},
 getAllCategory: (req, res) => {
     catModel.find({parentCatId:0}).exec((err, data) => {
         if (err) throw err;

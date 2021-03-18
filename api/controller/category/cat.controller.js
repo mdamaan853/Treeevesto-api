@@ -1,4 +1,4 @@
-const {createCategory, getAllCategory,getSubCatById} = require('./cat.service')
+const {createCategory,getAll, getAllCategory,getSubCatById} = require('./cat.service')
 module.exports = ({
     createCategorys:(req, res) => {
         createCategory(req, (err, data) => {
@@ -6,6 +6,21 @@ module.exports = ({
                 res.json({
                     success: 0,
                     msg: "error while inserting" + err
+                })
+            } else {
+                res.json({
+                    success: 1,
+                    result: data
+                })
+            }
+        })
+    },
+    getAll: (req, res) => {
+        getAll(req, (err, data) => {
+            if (err) {
+                res.json({
+                    success: 0,
+                    msg: "error while fetching " + err
                 })
             } else {
                 res.json({

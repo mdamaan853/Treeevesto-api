@@ -1,4 +1,4 @@
-const {createVendor, getAllVendor,getVendorById,loginVendor} = require('./vendor.service')
+const {createVendor, getAllVendor,getVendorById,deleteVendorById,loginVendor} = require('./vendor.service')
 const jwt = require('jsonwebtoken')
 const { hashSync, compareSync } = require('bcrypt')
 module.exports = ({
@@ -52,7 +52,9 @@ loginVendor(req,(err,data)=>{
             res.json({
                 success: 0,
                 msg: "you are loggedin",
-                token: token
+                token: token,
+                email:data.email,
+                userId:data._id
             })
         } else {
             res.json({
@@ -81,6 +83,27 @@ loginVendor(req,(err,data)=>{
     },
     getVendorsById: (req, res) => {
         getVendorById(req, (err, data) => {
+            if (err) {
+                res.json({
+                    success: 0,
+                    msg: "Error while fetching by id " + err
+                })
+            }
+            if (!data) {
+                res.json({
+                    success: 0,
+                    msg: "no records found"
+                })
+            } else {
+                res.json({
+                    success: 1,
+                    result: data
+                })
+            }
+        })
+    },
+    deleteVendorsById: (req, res) => {
+        deleteVendorById(req, (err, data) => {
             if (err) {
                 res.json({
                     success: 0,
