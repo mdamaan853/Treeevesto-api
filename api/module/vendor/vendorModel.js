@@ -1,5 +1,10 @@
 const mongoose =require('../mainDB') 
 const vendorschema = new mongoose.Schema({
+    _id:mongoose.Schema.Types.ObjectId, 
+    vendorId:{
+        type:mongoose.Schema.Types.ObjectId,
+        required: [true, 'Vendor id required']
+    },
     name:{
         type:String,
         required: [true, 'Vendor name required']
