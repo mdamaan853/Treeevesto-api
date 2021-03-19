@@ -6,6 +6,7 @@ const catRouter=require('./api/controller/category/cat.router')
 const vendorRouter=require('./api/controller/vendor/vender.router')
 const productRouter=require('./api/controller/product/product.router')
 const userRouter=require('./api/controller/users/user.router')
+const addressRouter=require('./api/controller/address/address.router')
 
 const PORT=process.env.PORT || 4000
 
@@ -21,6 +22,7 @@ app.use('/',catRouter)
 app.use('/',vendorRouter)
 app.use('/',productRouter)
 app.use('/',userRouter)
+app.use('/',addressRouter)
 app.get('/ping',(req,res)=>{
 res.send('server is on')
 })

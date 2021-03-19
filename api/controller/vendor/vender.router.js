@@ -15,7 +15,7 @@ router.get('/vendor',getAllVendors);
 
 router.get('/vendor/:id',getVendorsById);
 
-router.patch('/vendor/:id',updateVendorById);
+router.patch('/vendor/:id',upload.none(),updateVendorById);
 
 router.delete('/vendor/:id',deleteVendorsById);
 

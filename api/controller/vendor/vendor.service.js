@@ -45,7 +45,7 @@ getVendorById: (req, res) => {
     })
 },
 updateVendorById: (req, res) => {
-    vendorModel.update({_id:req.params.id},{$set:req.body}).exec((err, data) => {
+    vendorModel.updateOne({_id:req.params.id},{$set:req.body}).exec((err, data) => {
         if (err) throw err;
         return res(null,data)
     })

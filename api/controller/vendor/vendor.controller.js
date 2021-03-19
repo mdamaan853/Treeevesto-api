@@ -128,7 +128,7 @@ loginVendor(req,(err,data)=>{
             if (err) {
                 res.json({
                     success: 0,
-                    msg: "Error while fetching by id " + err
+                    msg: "Error while deleting" + err
                 })
             }
             if (!data) {
