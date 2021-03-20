@@ -21,6 +21,11 @@ const userschema = new mongoose.Schema({
         // regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$",
         description: "It must contains at least 8 characters,one digit,one upper case alphabet,lower case alphabet,one special character which includes !@#$%&*()-+=^.,It doesn’t contain any white space"
     },
+      userType:{
+          type:Number,
+          maximum:1,
+          default:0
+      },
       status:{
           type:Number,
           maximum:1,

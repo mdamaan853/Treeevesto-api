@@ -6,11 +6,12 @@ module.exports = ({
         phone:req.body.phone,
         email:req.body.email,
         password:req.body.password,
+        userType:req.body.userType,
         date:new Date(),
         }).save((err, data) => {
         if (err){
-            console.log('error...'+err)
-        };
+            return res(err)
+            };
         return res(null,data)
     })
 },
