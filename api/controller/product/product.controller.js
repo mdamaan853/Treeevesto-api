@@ -1,4 +1,4 @@
-const {createProduct, getAllProduct,getProductsBySubCategory,getProductById,deleteProductById} = require('./product.service')
+const {createProduct, getAllProduct,getProductsBySubCategory,getProductById,getProductsByVendorId,deleteProductById} = require('./product.service')
 const { hashSync, compareSync } = require('bcrypt')
 module.exports = ({
     createProducts:(req, res) => {
@@ -62,6 +62,27 @@ module.exports = ({
     },
     getProductsById: (req, res) => {
         getProductById(req, (err, data) => {
+            if (err) {
+                res.json({
+                    success: 0,
+                    msg: "Error while fetching by id " + err
+                })
+            }
+            if (!data) {
+                res.json({
+                    success: 0,
+                    msg: "no records found"
+                })
+            } else {
+                res.json({
+                    success: 1,
+                    result: data
+                })
+            }
+        })
+    },
+    getProductsByVendorId: (req, res) => {
+        getProductsByVendorId(req, (err, data) => {
             if (err) {
                 res.json({
                     success: 0,
