@@ -6,9 +6,9 @@ exports.venderValidation=
         check('email', 'enter valid emailID').isEmail().normalizeEmail(),
         check('password', 'password should contain minimum 8 digit').isLength({ min: 8}),
         check('cpassword', 'cpassword should not be  empty').not().isEmpty(),
-        check('pickupAddress', 'cpassword should not be  empty').not().isEmpty(),
-        check('pincode', 'cpassword should not be  empty').not().isEmpty().isLength({min:6,max:6}),
-        check('completeAddress', 'cpassword should not be  empty').not().isEmpty()        
+        check('pickupAddress', 'pickupAddress should not be  empty').not().isEmpty(),
+        check('pincode', 'Enter valid 6 digit pincode').not().isEmpty().isLength({min:6,max:6}),
+        check('completeAddress', 'complete Address should not be  empty').not().isEmpty()        
     ]
     exports.venderValidationResult=(req,res,next)=>{
         const errors = validationResult(req);

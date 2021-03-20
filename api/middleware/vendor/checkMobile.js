@@ -1,12 +1,12 @@
 const vendorModel = require('../../module/vendor/vendorModel')
 module.exports = ({
     checkMobile: (req, res, next) => {
+        // console.log(req.body.phone)
         vendorModel.find({phone:req.body.phone}).exec((err, data) => {
-            console.log(data)
             if (err) {
-                console.log(err)
-                res.json({
+             return res.json({
                     success: 0,
+                    msg:"error ",
                     err: err
                 })
             }

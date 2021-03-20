@@ -2,7 +2,6 @@ const vendorModel = require('../../module/vendor/vendorModel')
 module.exports = ({
     createVendor: (req, res) => {
      new vendorModel({
-        vendorId: req.body.vendorId,
         name: req.body.name,
         phone: req.body.phone,
         email: req.body.email,
@@ -17,7 +16,7 @@ module.exports = ({
         accHolderName:req.body.accHolderName ,
         }).save((err, data) => {
         if (err){
-            console.log('error...'+err)
+            return res(err)
         };
         return res(null,data)
     })

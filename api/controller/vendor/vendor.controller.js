@@ -65,7 +65,6 @@ loginVendor(req,(err,data)=>{
     }
 })
     },
-
     getAllVendors: (req, res) => {
         getAllVendor(req, (err, data) => {
             if (err) {
@@ -73,7 +72,8 @@ loginVendor(req,(err,data)=>{
                     success: 0,
                     msg: "error while fetching " + err
                 })
-            } else {
+            }
+             else {
                 res.json({
                     success: 1,
                     result: data
