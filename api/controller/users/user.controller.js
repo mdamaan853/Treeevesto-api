@@ -50,9 +50,12 @@ loginUser(req,(err,data)=>{
                 expiresIn: '24h'
             })
             res.json({
-                success: 0,
+                success: 1,
                 msg: "you are loggedin",
-                token: token
+                token: token,
+                email:data.email,
+                userId:data._id,
+                phone:data.phone
             })
         } else {
             res.json({

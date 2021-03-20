@@ -54,6 +54,12 @@ getProductById: (req, res) => {
         return res(null,data)
     })
 },
+getProductsByVendorId: (req, res) => {
+    productModel.find({vendorId:req.params.id}).exec((err, data) => {
+        if (err) throw err;
+        return res(null,data)
+    })
+},
 deleteProductById: (req, res) => {
     productModel.deleteMany().exec((err, data) => {
         if (err) throw err;
