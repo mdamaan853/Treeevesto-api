@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const multer = require('multer')
 
-const {createCards,getAllCards,getCardsById,updateCardsById,deleteCardsById}= require('./card.controller')
+const {createCards,getAllCards,getCardsById,getCardsBySection,updateCardsById,deleteCardsById}= require('./card.controller')
 
 const storage = multer.diskStorage({
     destination: './upload/cardImg',
@@ -18,6 +18,8 @@ const upload = multer({
 router.post('/card',upload,createCards);
 
 router.get('/card',getAllCards);
+
+router.get('/card/section/:id',getCardsBySection);
 
 router.get('/card/:id',getCardsById);
 
