@@ -30,7 +30,9 @@ app.use('/upload/category_img/:id',(req,res)=> res.sendFile(__dirname + '/upload
 app.use('/upload/users_img/:id',(req,res)=> res.sendFile(__dirname + '/upload/users_img/'+req.params.id));
 app.use('/upload/banner_img/:id',(req,res)=> res.sendFile(__dirname + '/upload/banner_img/'+req.params.id));
 app.use('/upload/cardImg/:id',(req,res)=> res.sendFile(__dirname + '/upload/cardImg/'+req.params.id));
+
 // app.use(express.static('upload'))
+
 app.use('/',catRouter)
 app.use('/',vendorRouter)
 app.use('/',productRouter)
