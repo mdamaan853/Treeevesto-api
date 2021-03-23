@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser=require('body-parser')
 const app = express()
 const cors = require('cors')
+const https = require("https")
+const fs = require("fs")
+
 const catRouter=require('./api/controller/category/cat.router')
 const vendorRouter=require('./api/controller/vendor/vender.router')
 const productRouter=require('./api/controller/product/product.router')
@@ -14,6 +17,10 @@ const orderRouter=require('./api/controller/order/order.router')
 
 const PORT=process.env.PORT || 4000
 
+const httpsServer = https.createServer({
+    key: fs.readFileSync('./keys/key.pem'),
+    cert: fs.readFileSync('./keys/cert.pem'),
+  }, app);
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: false }))
@@ -36,6 +43,8 @@ app.use('/',orderRouter)
 app.get('/ping',(req,res)=>{
 res.send('server is on')
 })
-app.listen(PORT, () => {
-    console.log(`your server has been started on port ${PORT}`)
-})
+
+httpsServer.listen(PORT, () => {
+    console.log(`HTTPS Server running on port ${PORT}`);
+});
+
