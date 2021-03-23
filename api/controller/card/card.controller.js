@@ -1,4 +1,4 @@
-const {createCard,getAllCard,getCardById,updateCardById,deleteCardById} = require('./card.service')
+const {createCard,getAllCard,getCardById,getCardsBySection,updateCardById,deleteCardById} = require('./card.service')
 module.exports = ({
     createCards:(req, res) => {
         if(req.file){
@@ -20,6 +20,21 @@ module.exports = ({
     },
     getAllCards: (req, res) => {
         getAllCard(req, (err, data) => {
+            if (err) {
+                res.json({
+                    success: 0,
+                    msg: "error while fetching " + err
+                })
+            } else {
+                res.json({
+                    success: 1,
+                    result: data
+                })
+            }
+        })
+    },
+    getCardsBySection: (req, res) => {
+        getCardsBySection(req, (err, data) => {
             if (err) {
                 res.json({
                     success: 0,

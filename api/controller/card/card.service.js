@@ -19,6 +19,12 @@ getAllCard: (req, res) => {
         return res(null,data)
     })
 },
+getCardsBySection: (req, res) => {
+    cardModel.find({sectionId:req.params.id}).exec((err, data) => {
+        if (err) throw err;
+        return res(null,data)
+    })
+},
 getCardById: (req, res) => {
     cardModel.findById(req.params.id).exec((err, data) => {
         if (err) throw err;
