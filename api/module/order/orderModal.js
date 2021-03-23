@@ -1,0 +1,70 @@
+const mongoose =require('../mainDB') 
+const orderschema = new mongoose.Schema({
+    userId:{
+        type:String,
+        required:true
+    },
+    transactionNo:{
+        type:String
+    },
+    orderType:{
+        type:String,
+        required:true
+    },
+    cart:{
+        type:String,
+        required:true,
+    },
+    totalAmount:{
+        type:String,
+        required:true
+    },
+    address:{
+        type:String,
+        required:true
+    },
+    transactionStatus:{
+        type:String
+    },
+    orderDetails:{
+        type:String
+    },
+    orderStatus:{
+        type:String
+    },
+    couponsUsed:{
+        type:String,
+    },
+    couponID:{
+        type:String,
+    },
+    useSavedAddress:{
+        type:String,
+    },
+    customerPhone:{
+        type:Number,
+        required:true
+    },
+    customerCity:{
+        type:String,
+        default:0
+    },
+    customerPincode:{
+        type:Number,
+        default:0
+    },
+    customerState:{
+        type:String,
+        required:true
+    },
+    refund:{
+        type:String,
+        default:0,
+    },
+    date:{
+        type:Date,
+    }
+
+})
+const ordermodel = mongoose.model('order',orderschema);
+module.exports = ordermodel;

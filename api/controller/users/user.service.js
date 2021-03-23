@@ -25,13 +25,17 @@ loginUser: (req, res) => {
 },
 getAllUser: (req, res) => {
     userModel.find().exec((err, data) => {
-        if (err) throw err;
+        if (err){
+            return res(err);
+        };
         return res(null,data)
     })
 },
 getUserById: (req, res) => {
     userModel.find({_id:req.params.id}).exec((err, data) => {
-        if (err) throw err;
+        if (err){
+            return res(err);
+        };;
         return res(null,data)
     })
 }

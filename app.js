@@ -10,6 +10,7 @@ const addressRouter=require('./api/controller/address/address.router')
 const bannerRouter=require('./api/controller/banner/banner.router')
 const cardRouter=require('./api/controller/card/card.router')
 const sectionRouter=require('./api/controller/section/section.router')
+const orderRouter=require('./api/controller/order/order.router')
 
 const PORT=process.env.PORT || 4000
 
@@ -29,6 +30,7 @@ app.use('/',addressRouter)
 app.use('/',bannerRouter)
 app.use('/',cardRouter)
 app.use('/',sectionRouter)
+app.use('/',orderRouter)
 app.get('/ping',(req,res)=>{
 res.send('server is on')
 })
