@@ -12,6 +12,7 @@ module.exports = ({
                     success: 1,
                     result: data
                 })
+                console.log(data)
             }
         })
     },

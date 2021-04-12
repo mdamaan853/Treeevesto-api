@@ -4,6 +4,30 @@ const app = express()
 const cors = require('cors')
 const https = require("https")
 const fs = require("fs")
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'mdamaan853@gmail.com',
+    pass: 'Jamshedpur_123'
+  }
+});
+
+var mailOptions = {
+  from: 'mdamaan853@gmail.com',
+  to: 'mdamaan2605@gmail.com',
+  subject: 'send mail',
+  text: `hello Amaan this message was send by the node mailer`
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
 
 const catRouter=require('./api/controller/category/cat.router')
 const vendorRouter=require('./api/controller/vendor/vender.router')
