@@ -4,29 +4,31 @@ const app = express()
 const cors = require('cors')
 const https = require("https")
 const fs = require("fs")
-var nodemailer = require('nodemailer');
 
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'mdamaan853@gmail.com',
-    pass: 'Jamshedpur_123'
-  }
-});
+var msg91=require('msg91-sms');
+//Authentication Key 
+var authkey='358570AEnzxIgE96Ss60743930P1';
 
-var mailOptions = {
-  from: 'mdamaan853@gmail.com',
-  to: 'mdamaan2605@gmail.com',
-  subject: 'send mail',
-  text: `hello Amaan this message was send by the node mailer`
-};
+//for single number
+var number='7004937515';
+ 
+//message
+var message='your order have been placed for 100 Chocolates total payable amount RS-2000';
+ 
+//Sender ID
+var senderid='msgind';
+ 
+//Route
+var route='route4';
+ 
+//Country dial code
+var dialcode='91';
+ 
+//send to single number
+msg91.sendOne(authkey,number,message,senderid,route,dialcode,function(response){
 
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
+//Returns Message ID, If Sent Successfully or the appropriate Error Message
+console.log(response);
 });
 
 const catRouter=require('./api/controller/category/cat.router')
@@ -70,7 +72,10 @@ app.get('/ping',(req,res)=>{
 res.send('server is on')
 })
 
-httpsServer.listen(PORT, () => {
-    console.log(`HTTPS Server running on port ${PORT}`);
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
+// httpsServer.listen(PORT, () => {
+//     console.log(`HTTPS Server running on port ${PORT}`);
+// });
 

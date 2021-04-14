@@ -3,6 +3,7 @@ module.exports = ({
     createOrder: (req, res) => {
      new orderModel({
         userId:req.body.userId,
+        customerName:req.body.customerName,
         transactionNo:req.body.transactionNo,
         cart:req.body.cart,
         orderType:req.body.orderType,
@@ -15,6 +16,7 @@ module.exports = ({
         couponsUsed:req.body.couponsUsed,
         couponID:req.body.couponID,
         customerPhone:req.body.customerPhone,
+        customerEmail:req.body.customerEmail,
         customerCity:req.body.customerCity,
         customerPincode:req.body.customerPincode,
         customerState:req.body.customerState,

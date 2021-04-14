@@ -1,8 +1,10 @@
+var nodemailer = require('nodemailer');
 const { createOrder,getAllOrder,getOrderById,getOrderByUserId,deleteOrderById,updateOrderById} = require('./order.service')
 module.exports = ({
     createOrders: (req, res) => {
         createOrder(req, (err, data) => {
             if (err) {
+                console.log(err)
                 res.json({
                     success: 0,
                     msg: "error while inserting " + err
@@ -13,6 +15,34 @@ module.exports = ({
                     result: data
                 })
                 console.log(data)
+                var transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                      user: 'mdamaan853@gmail.com',
+                      pass: 'Jamshedpur_123'
+                    }
+                  });
+                  
+                  var mailOptions = {
+                    from: 'mdamaan853@gmail.com',
+                    to:data.customerEmail,
+                    subject: 'Order placed ',
+                    text: `hello ${data.customerName} your order for  
+                    ${data.cart} is placed it will be deliver at 
+                    ${data.address}
+                    order Id: ${data._id}
+                    Total amount is ${data.totalAmount}
+                    it will be delivered soon 
+                    `
+                  };
+                  
+                  transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                      console.log(error);
+                    } else {
+                      console.log('Email sent: ' + info.response);
+                    }
+                  });
             }
         })
     },
