@@ -4,10 +4,6 @@ const orderschema = new mongoose.Schema({
         type:String,
         required:true
     },
-    customerName:{
-        type:String,
-        required:true
-    },
     transactionNo:{
         type:String
     },
@@ -47,10 +43,6 @@ const orderschema = new mongoose.Schema({
     },
     customerPhone:{
         type:Number,
-        required:true
-    },
-    customerEmail:{
-        type:String,
         required:true
     },
     customerCity:{

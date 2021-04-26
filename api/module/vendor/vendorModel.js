@@ -31,12 +31,15 @@ const vendorschema = new mongoose.Schema({
     //    required:true,
     //    description:"Pickup address is required"
     },
-completeAddress:{
+    state:{
+       type:String
+    },
+     completeAddress:{
        type:String,
     //    required:true,
     //    description:"Complete address is required"
     },
-gstNo:{
+     gstNo:{
        type:String
     },
     BankaccType:{
@@ -49,6 +52,27 @@ gstNo:{
           type:String
       },
       accHolderName:{
+          type:String
+      },
+      store_name:{
+          type:String
+      },
+      store_description:{
+          type:String
+      },
+      signature_docs:{
+          type:String
+      },
+      gstin_verified:{
+          type:String
+      },
+      email_verified:{
+          type:String
+      },
+      signature_verified:{
+          type:String
+      },
+      bank_verified:{
           type:String
       },
       status:{

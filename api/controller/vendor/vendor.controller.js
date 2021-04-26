@@ -28,7 +28,7 @@ module.exports = ({
     },
 
     loginVendors:(req,res)=>{
-loginVendor(req,(err,data)=>{
+    loginVendor(req,(err,data)=>{
     if (err) {
         res.json({
             success: 0,
@@ -63,7 +63,7 @@ loginVendor(req,(err,data)=>{
             })
         }
     }
-})
+  })
     },
     getAllVendors: (req, res) => {
         getAllVendor(req, (err, data) => {
@@ -103,6 +103,10 @@ loginVendor(req,(err,data)=>{
         })
     },
     updateVendorById: (req, res) => {
+        if(req.file){
+          console.log(req.file)
+          req.body.signature_docs=req.file.path;
+            }  
         updateVendorById(req, (err, data) => {
             if (err) {
                 res.json({

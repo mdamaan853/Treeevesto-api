@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const multer = require('multer')
 
-const { createCategorys,getAll,getAllCategorys,getSubCatsById } = require('./cat.controller')
+const { createCategorys,getAll,getAllCategorys,getSubCatsById,deleteCategorysById } = require('./cat.controller')
 
 const storage = multer.diskStorage({
     destination: './upload/category_img',
@@ -21,5 +21,7 @@ router.get('/category',getAllCategorys);
 router.get('/category/all',getAll);
 
 router.get('/subcategory/:id',getSubCatsById);
+
+router.delete('/category/:id',deleteCategorysById);
 
 module.exports = router; 

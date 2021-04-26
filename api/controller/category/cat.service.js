@@ -5,13 +5,12 @@ module.exports = ({
         catName: req.body.catName,
         slug: req.body.slug,
         desc: req.body.desc,
-        imgUrl: req.file.path,
+        imgUrl: req.body.imgUrl,
         parentCatId: req.body.parentCatId,
-        productId: req.body.productId,
         metaKeyword:req.body.metaKeyword,
         }).save((err, data) => {
         if (err){
-            console.log('error...'+err)
+            return res(err); 
         };
         return res(null,data)
     })
@@ -34,4 +33,10 @@ getSubCatById: (req, res) => {
         return res(null,data)
     })
 },
+deleteCategoryById: (req, res) => {
+    catModel.deleteOne({_id:req.params.id}).exec((err, data) => {
+        if (err) throw err;
+        return res(null,data)
+    })
+}
 })

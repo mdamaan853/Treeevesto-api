@@ -8,16 +8,24 @@ module.exports = ({
         password: req.body.password,
         pickupAddress: req.body.pickupAddress,
         pincode: req.body.pincode,
+        state: req.body.state,
         completeAddress:req.body.completeAddress ,
         gstNo:req.body.gstNo ,
         BankaccType:req.body.BankaccType ,
         ifsc:req.body.ifsc ,
         accNumber:req.body.accNumber ,
         accHolderName:req.body.accHolderName ,
+        store_name:req.body.store_name ,
+        store_description:req.body.store_description ,
+        signature_docs:req.body.signature_docs ,
+        gstin_verified:req.body.gstin_verified,
+        email_verified:req.body.email_verified,
+        signature_verified:req.body.signature_verified,
+        bank_verified:req.body.bank_verified,
         }).save((err, data) => {
         if (err){
             return res(err)
-        };
+        }
         return res(null,data)
     })
 },

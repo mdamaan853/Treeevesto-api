@@ -9,18 +9,15 @@ const catschema = new mongoose.Schema({
     },
     desc:{
         type:String,
-        required:true,
+        // required:true,
     },
     imgUrl:{
         type:String,
-        required:true
+        // required:true
     },
     parentCatId:{
-       type:String
-    },
-    productId:{
-        type:String,
-        required:true
+       type:String,
+       default:0
     },
     metaKeyword:{
         type:String

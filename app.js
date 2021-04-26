@@ -7,7 +7,7 @@ const fs = require("fs")
 
 var msg91=require('msg91-sms');
 //Authentication Key 
-var authkey='358570AEnzxIgE96Ss60743930P1';
+var authkey='318367AukJfzDtjdsi60803353P1';
 
 //for single number
 var number='7004937515';
@@ -16,20 +16,19 @@ var number='7004937515';
 var message='your order have been placed for 100 Chocolates total payable amount RS-2000';
  
 //Sender ID
-var senderid='msgind';
+var senderid='TRVSTO';
  
 //Route
-var route='route4';
+var route='4';
  
 //Country dial code
 var dialcode='91';
  
 //send to single number
-msg91.sendOne(authkey,number,message,senderid,route,dialcode,function(response){
-
-//Returns Message ID, If Sent Successfully or the appropriate Error Message
-console.log(response);
-});
+// msg91.sendOne(authkey,number,message,senderid,route,dialcode,function(response){
+// //Returns Message ID, If Sent Successfully or the appropriate Error Message
+// console.log(response);
+// });
 
 const catRouter=require('./api/controller/category/cat.router')
 const vendorRouter=require('./api/controller/vendor/vender.router')
@@ -40,6 +39,7 @@ const bannerRouter=require('./api/controller/banner/banner.router')
 const cardRouter=require('./api/controller/card/card.router')
 const sectionRouter=require('./api/controller/section/section.router')
 const orderRouter=require('./api/controller/order/order.router')
+const specTableRouter=require('./api/controller/specTable/specTable.router')
 
 const PORT=process.env.PORT || 4000
 
@@ -68,6 +68,7 @@ app.use('/',bannerRouter)
 app.use('/',cardRouter)
 app.use('/',sectionRouter)
 app.use('/',orderRouter)
+app.use('/',specTableRouter)
 app.get('/ping',(req,res)=>{
 res.send('server is on')
 })

@@ -27,8 +27,127 @@ const productschema = new mongoose.Schema({
   },
   productType: {
     type: String,
-    required: [true, "Type is required required"],
+    required: [true, "Type is  required"],
   },
+  // specification columns start////////////////////
+  Occasion : {
+    type: String,
+  },
+  Colour  : {
+    type: String,
+  },
+  Wash_Care : {
+    type: String,
+  },
+  Colour_Map : {
+    type: String,
+  },
+  Ornamentation  : {
+    type: String,
+  },
+  Weave_Type : {
+    type: String,
+  },
+  Fabric  : {
+    type: String,
+  },
+  Print_or_Pattern_Type : {
+    type: String,
+  },
+  Design_Name  : {
+    type: String,
+  },
+  Style : {
+    type: String,
+  },
+  Border_Details : {
+    type: String,
+  },
+  Length : {
+    type: String,
+  },
+  Blouse_Piece_Included : {
+    type: String,
+  },
+  Blouse_Length : {
+    type: String,
+  },
+  Blouse_Details  : {
+    type: String,
+  },
+  Disclaimer  : {
+    type: String,
+  },
+  Package_Includes  : {
+    type: String,
+  },
+  Sleeve_Type  : {
+    type: String,
+  },
+  Neck_Type  : {
+    type: String,
+  },
+  Body_Length : {
+    type: String,
+  },
+  Slit_Detail  : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Top_Fabric : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  Occasion : {
+    type: String,
+  },
+  // specification columns end////////////////////
   regularPrice: {
     type: String,
     required: true,

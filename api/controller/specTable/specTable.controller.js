@@ -1,10 +1,11 @@
-const {createCategory,getAll, getAllCategory,getSubCatById, deleteCategoryById} = require('./cat.service')
+const {createTable,getAllTable,deleteTableById, updateTableById,getTableById} = require('./specTable.service')
 module.exports = ({
-    createCategorys:(req, res) => {
-        if(req.file){
-            console.log(req.file)
+    createTables:(req, res) => {
+        if(req.body.field){
+        console.log(req.body.field.split(','))
+        req.body.field=req.body.field.split(',')
         }
-        createCategory(req, (err, data) => {
+        createTable(req, (err, data) => {
             if (err) {
                 res.json({
                     success: 0,
@@ -18,8 +19,8 @@ module.exports = ({
             }
         })
     },
-    getAll: (req, res) => {
-        getAll(req, (err, data) => {
+    getAllTables: (req, res) => {
+        getAllTable(req, (err, data) => {
             if (err) {
                 res.json({
                     success: 0,
@@ -33,8 +34,8 @@ module.exports = ({
             }
         })
     },
-    getAllCategorys: (req, res) => {
-        getAllCategory(req, (err, data) => {
+    getTablesById: (req, res) => {
+        getTableById(req, (err, data) => {
             if (err) {
                 res.json({
                     success: 0,
@@ -48,8 +49,12 @@ module.exports = ({
             }
         })
     },
-    getSubCatsById: (req, res) => {
-        getSubCatById(req, (err, data) => {
+    updateTablesById: (req, res) => {
+        if(req.body.field){
+            console.log(req.body.field.split(','))
+            req.body.field=req.body.field.split(',')
+            }
+        updateTableById(req, (err, data) => {
             if (err) {
                 res.json({
                     success: 0,
@@ -69,8 +74,8 @@ module.exports = ({
             }
         })
     },
-    deleteCategorysById: (req, res) => {
-        deleteCategoryById(req, (err, data) => {
+    deleteTablesById: (req, res) => {
+        deleteTableById(req, (err, data) => {
             if (err) {
                 res.json({
                     success: 0,
