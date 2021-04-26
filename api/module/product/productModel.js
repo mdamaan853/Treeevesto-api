@@ -147,9 +147,6 @@ Inner_Included: {
 Inner_Fabric: {
     type: String,
   },
-Package_Includes: {
-    type: String,
-  },
 Top_Type: {
     type: String,
   },
