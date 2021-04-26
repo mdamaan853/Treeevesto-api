@@ -93,58 +93,91 @@ const productschema = new mongoose.Schema({
   Slit_Detail  : {
     type: String,
   },
-  Occasion : {
-    type: String,
-  },
   Top_Fabric : {
     type: String,
   },
-  Occasion : {
+Bottom_Fabric: {
     type: String,
   },
-  Occasion : {
+Top_Length: {
     type: String,
   },
-  Occasion : {
+Bottom_Length: {
     type: String,
   },
-  Occasion : {
+Top_Colour: {
     type: String,
   },
-  Occasion : {
+Bottom_Colour: {
     type: String,
   },
-  Occasion : {
+Dupatta_Colour: {
     type: String,
   },
-  Occasion : {
+Dupatta_Length: {
+    type: String,
+  }, 
+Dupatta_Fabric: {
     type: String,
   },
-  Occasion : {
+Dupatta_Design: {
+    type: String,
+  }, 
+Top_Design: {
+    type: String,
+  }, 
+Bottom_Design: {
+    type: String,
+  }, 
+Top_Print_or_Pattern: {
     type: String,
   },
-  Occasion : {
+Bottom_Print_or_Pattern: {
+    type: String,
+  }, 
+Dupatta_Print_or_Pattern: {
+    type: String,
+  }, 
+Bust_Size: {
     type: String,
   },
-  Occasion : {
+Inner_Included: {
+    type: String,
+  }, 
+Inner_Fabric: {
     type: String,
   },
-  Occasion : {
+Package_Includes: {
     type: String,
   },
-  Occasion : {
+Top_Type: {
     type: String,
   },
-  Occasion : {
+Top_Style: {
     type: String,
   },
-  Occasion : {
+Top_Print_or_Pattern_Type: {
     type: String,
   },
-  Occasion : {
+Top_Slit_Detail: {
     type: String,
   },
-  Occasion : {
+Bottom_Type: {
+    type: String,
+  },
+Top_Stitch: {
+    type: String,
+  },
+Bottom_Stitch: {
+    type: String,
+  },
+Border: {
+    type: String,
+  }, 
+Inner_Lining: {
+    type: String,
+  },
+Inner_Lining_Fabric: {
     type: String,
   },
   // specification columns end////////////////////
@@ -211,6 +244,24 @@ const productschema = new mongoose.Schema({
     type: Number,
     maximum: 1,
     default: 0,
+  },
+  HSN_Code: {
+    type: String,
+  },
+   GST: {
+    type: String,
+  },
+   Meta_Keywords: {
+    type: String,
+  }, 
+  Meta_Data: {
+    type: String,
+  } ,
+   Meta_Description: {
+    type: String,
+  },
+   Meta_image_URL: {
+    type: String,
   },
   date: {
     type: Date,
