@@ -40,6 +40,7 @@ const cardRouter=require('./api/controller/card/card.router')
 const sectionRouter=require('./api/controller/section/section.router')
 const orderRouter=require('./api/controller/order/order.router')
 const specTableRouter=require('./api/controller/specTable/specTable.router')
+const orderedProductRouter=require('./api/controller/orderedProduct/orderPro.router')
 
 const PORT=process.env.PORT || 4000
 
@@ -69,6 +70,7 @@ app.use('/',cardRouter)
 app.use('/',sectionRouter)
 app.use('/',orderRouter)
 app.use('/',specTableRouter)
+app.use('/',orderedProductRouter)
 app.get('/ping',(req,res)=>{
 res.send('server is on')
 })

@@ -35,7 +35,7 @@ getUserById: (req, res) => {
     userModel.find({_id:req.params.id}).exec((err, data) => {
         if (err){
             return res(err);
-        };;
+        };
         return res(null,data)
     })
 }
