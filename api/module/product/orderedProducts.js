@@ -5,7 +5,8 @@ const orderedProschema = new mongoose.Schema({
         required:true
     },
     vendorId:{
-        type:String
+        type:String,
+        required:true
     },
     image:{
         type:String,
