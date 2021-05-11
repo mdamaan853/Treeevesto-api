@@ -9,6 +9,9 @@ module.exports = ({
         price: req.body.price,
         qty:req.body.qty,
         size:req.body.size,
+        userId: req.body.userId,
+        address: req.body.address,
+        orderedStatus:req.body.orderedStatus
         }).save((err, data) => {
         if (err){
             return res(err); 

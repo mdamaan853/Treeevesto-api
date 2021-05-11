@@ -86,25 +86,32 @@ module.exports = {
     }).save((err, data) => {
       if (err) {
         console.log("error..." + err);
+        return res (err)
       }
       return res(null, data);
     });
   },
   getAllProduct: (req, res) => {
     productModel.find().exec((err, data) => {
-      if (err) throw err;
+      if (err) return res (err);
       return res(null, data);
     });
   },
   getProductsBySubCategory: (req, res) => {
     productModel.find({ subcatId: req.params.id }).exec((err, data) => {
-      if (err) throw err;
+      if (err) return res (err);
       return res(null, data);
     });
   },
   getProductById: (req, res) => {
     productModel.find({ _id: req.params.id }).exec((err, data) => {
-      if (err) throw err;
+      if (err) return res (err);
+      return res(null, data);
+    });
+  },
+  filterProduct: (req, res) => {
+    productModel.find({sellingPrice:{$gt:req.params.price}}).exec((err, data) => {
+      if (err) return res (err);
       return res(null, data);
     });
   },

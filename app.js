@@ -3,7 +3,32 @@ const bodyParser=require('body-parser')
 const app = express()
 const cors = require('cors')
 const https = require("https")
+var nodemailer = require('nodemailer');
 const fs = require("fs")
+
+
+// var transporter =nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: 'mr.devil27102001@gmail.com',
+//     pass: 'Idontthicksoo'
+//   }
+// });
+
+// var mailOptions = {
+//   from: 'mr.devil27102001@gmail.com',
+//   to: 'md.ayan835@gmail.com',
+//   subject: 'wellcome to hackers world 👨‍💻👨‍💻',
+//   html:`<h1> You are hacked 😎😎</h3>`
+// };
+
+// transporter.sendMail(mailOptions, function(error, info){
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log('Email sent: ' + info.response);
+//   }
+// });
 
 var msg91=require('msg91-sms');
 //Authentication Key 
@@ -24,7 +49,7 @@ var route='4';
 //Country dial code
 var dialcode='91';
  
-//send to single number
+// // send to single number
 // msg91.sendOne(authkey,number,message,senderid,route,dialcode,function(response){
 // //Returns Message ID, If Sent Successfully or the appropriate Error Message
 // console.log(response);
@@ -40,10 +65,11 @@ const cardRouter=require('./api/controller/card/card.router')
 const sectionRouter=require('./api/controller/section/section.router')
 const orderRouter=require('./api/controller/order/order.router')
 const specTableRouter=require('./api/controller/specTable/specTable.router')
-  const orderedProductRouter=require('./api/controller/orderedProduct/orderPro.router')
-  const couponRouter=require('./api/controller/coupon/coupon.router')
+const orderedProductRouter=require('./api/controller/orderedProduct/orderPro.router')
+const couponRouter=require('./api/controller/coupon/coupon.router')
+const reviewRouter=require('./api/controller/productReview/review.router')
 
-const PORT=process.env.PORT || 4000
+const PORT=process.env.PORT || 3000
 
 const httpsServer = https.createServer({
     key: fs.readFileSync('./keys/key.pem'),
@@ -73,6 +99,7 @@ app.use('/',orderRouter)
 app.use('/',specTableRouter)
 app.use('/',orderedProductRouter)
 app.use('/',couponRouter)
+app.use('/',reviewRouter)
 app.get('/ping',(req,res)=>{
 res.send('server is on')
 })

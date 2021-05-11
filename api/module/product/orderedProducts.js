@@ -4,9 +4,16 @@ const orderedProschema = new mongoose.Schema({
         type:String,
         required:true
     },
-    vendorId:{
+    userId:{
         type:String,
         required:true
+    },
+    orderedStatus:{
+        type:String,
+        default:0
+    },
+    address:{
+        type:String,
     },
     image:{
         type:String,

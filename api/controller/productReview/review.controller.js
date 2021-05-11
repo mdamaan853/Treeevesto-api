@@ -1,31 +1,28 @@
-const {createProduct, getAllProduct,getProductsBySubCategory,getProductById,getProductsByVendorId,deleteProductById,filterProduct} = require('./product.service')
-const { hashSync, compareSync } = require('bcrypt')
+const {createReview,getAllReview,getReviewById,updateReviewById,deleteReviewById,deleteReview} = require('./review.service')
 module.exports = ({
-    createProducts:(req, res) => {
+    createReviews:(req, res) => {
         if(req.files){
-            req.body.productImages=req.files.map(element => {
+            req.body.reviewImages=req.files.map(element => {
                 return element.path
             });
-            console.log(req.body.productImages)
+            console.log(req.body.reviewImages)
             }  
-          createProduct(req, (err, data) => {
-                if (err) {
-                    res.status(500)
-                    res.json({
-                        success: 0,
-                        msg: "error while inserting " + err
-                    })
-                } else {
-                    res.json({
-                        success: 1,
-                        msg: "successfully regestred",
-                        result:data
-                    })
-                }
-            })
+        createReview(req, (err, data) => {
+            if (err) {
+                res.json({
+                    success: 0,
+                    msg: "error while inserting" + err
+                })
+            } else {
+                res.json({
+                    success: 1,
+                    result: data
+                })
+            }
+        })
     },
-    getAllProducts: (req, res) => {
-        getAllProduct(req, (err, data) => {
+    getAllReviews: (req, res) => {
+        getAllReview(req, (err, data) => {
             if (err) {
                 res.json({
                     success: 0,
@@ -39,8 +36,8 @@ module.exports = ({
             }
         })
     },
-    getProductsBySubCategory: (req, res) => {
-        getProductsBySubCategory(req, (err, data) => {
+    getReviewsById: (req, res) => {
+        getReviewById(req, (err, data) => {
             if (err) {
                 res.json({
                     success: 0,
@@ -60,8 +57,8 @@ module.exports = ({
             }
         })
     },
-    getProductsById: (req, res) => {
-        getProductById(req, (err, data) => {
+    updateReviewsById: (req, res) => {
+        updateReviewById(req, (err, data) => {
             if (err) {
                 res.json({
                     success: 0,
@@ -81,12 +78,12 @@ module.exports = ({
             }
         })
     },
-    getProductsByVendorId: (req, res) => {
-        getProductByVendorId(req, (err, data) => {
+    deleteReviewsById: (req, res) => {
+        deleteReviewById(req, (err, data) => {
             if (err) {
                 res.json({
                     success: 0,
-                    msg: "Error while fetching by id " + err
+                    msg: "Error while deleting" + err
                 })
             }
             if (!data) {
@@ -102,54 +99,12 @@ module.exports = ({
             }
         })
     },
-    getProductsById: (req, res) => {
-        getProductById(req, (err, data) => {
+    deleteReviews: (req, res) => {
+        deleteReview(req, (err, data) => {
             if (err) {
                 res.json({
                     success: 0,
-                    msg: "Error while fetching by id " + err
-                })
-            }
-            if (!data) {
-                res.json({
-                    success: 0,
-                    msg: "no records found"
-                })
-            } else {
-                res.json({
-                    success: 1,
-                    result: data
-                })
-            }
-        })
-    },
-    filterProducts: (req, res) => {
-        filterProduct(req, (err, data) => {
-            if (err) {
-                res.json({
-                    success: 0,
-                    msg: "Error while searching " + err
-                })
-            }
-            if (!data) {
-                res.json({
-                    success: 0,
-                    msg: "no records found"
-                })
-            } else {
-                res.json({
-                    success: 1,
-                    result: data
-                })
-            }
-        })
-    },
-    deleteProductsById: (req, res) => {
-        deleteProductById(req, (err, data) => {
-            if (err) {
-                res.json({
-                    success: 0,
-                    msg: "Error while fetching by id " + err
+                    msg: "Error while deleting" + err
                 })
             }
             if (!data) {

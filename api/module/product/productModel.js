@@ -207,7 +207,7 @@ Inner_Lining_Fabric: {
   sku: {
     type: String,
   },
-  stockQuantity: {
+  stock: {
     type: Number,
   },
   allowBackOrder: {
@@ -258,6 +258,12 @@ Inner_Lining_Fabric: {
     type: String,
   },
    Meta_image_URL: {
+    type: String,
+  },
+    colour: {
+    type: String,
+  },
+    size: {
     type: String,
   },
   date: {
