@@ -109,21 +109,23 @@ module.exports = {
       return res(null, data);
     });
   },
-  filterProduct: (req, res) => {
-    productModel.find({sellingPrice:{$gt:req.params.price}}).exec((err, data) => {
+  // productModel.find({Colour:{ $in: ["red","blue"]}}).exec((err, data) => {
+    // productModel.find({Colour:{ $in:['red']}}).exec((err, data) => {
+    filterProduct: (req, res) => {
+        productModel.find().exec((err, data) => {
       if (err) return res (err);
       return res(null, data);
     });
   },
-  getProductsByVendorId: (req, res) => {
+  getProductByVendorId: (req, res) => {
     productModel.find({ vendorId: req.params.id }).exec((err, data) => {
-      if (err) throw err;
+      if (err) return res (err);
       return res(null, data);
     });
   },
   deleteProductById: (req, res) => {
     productModel.deleteMany().exec((err, data) => {
-      if (err) throw err;
+      if (err) return res (err);
       return res(null, data);
     });
   },

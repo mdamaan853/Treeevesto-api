@@ -2,12 +2,12 @@ const express = require('express')
 const router = express.Router()
 const multer = require('multer')
 
-const { createProducts,getAllProducts,getProductsBySubCategory,getProductsById,getProductsByVendorId,deleteProductsById,filterProducts } = require('./product.controller')
+const { createProducts,getAllProducts,getProductsBySubCategory,getProductsById,getProductsByVendorId,deleteProductsById,filterProducts} = require('./product.controller')
 
 const auth = require('../../middleware/Auth')
 
 const storage = multer.diskStorage({
-    destination: './upload/category_img',
+    destination: './upload/product_img',
     filename: (req, file, cb) => {
         return cb(null, file.fieldname + Date.now() + file.originalname)
     }
@@ -18,16 +18,14 @@ const upload = multer({
 
 router.post('/product', upload.array('productImages', 12),createProducts);
 
-router.get('/product',getAllProducts);
-// <<<<<<< HEAD
-// =======
+router.get('/product/all',getAllProducts);
 
 router.get('/product/subcat/:id',getProductsBySubCategory);
-// >>>>>>> 11b5b97f16d18f8196b83c56e6e6a1cad57c5643
 
 router.get('/product/:id',getProductsById);
 
-router.get('/product/search/:price',filterProducts);
+router.get('/product/',filterProducts);
+// router.post('/product/search/filter',upload.none(),filterProducts);
 
 router.get('/product/vendor/:id',getProductsByVendorId);
 

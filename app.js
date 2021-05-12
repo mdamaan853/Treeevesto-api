@@ -69,7 +69,7 @@ const orderedProductRouter=require('./api/controller/orderedProduct/orderPro.rou
 const couponRouter=require('./api/controller/coupon/coupon.router')
 const reviewRouter=require('./api/controller/productReview/review.router')
 
-const PORT=process.env.PORT || 3000
+const PORT=process.env.PORT || 4000
 
 const httpsServer = https.createServer({
     key: fs.readFileSync('./keys/key.pem'),

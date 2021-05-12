@@ -1,4 +1,4 @@
-const {createProduct, getAllProduct,getProductsBySubCategory,getProductById,getProductsByVendorId,deleteProductById,filterProduct} = require('./product.service')
+const {createProduct, getAllProduct,getProductsBySubCategory,getProductById,getProductByVendorId,deleteProductById,filterProduct} = require('./product.service')
 const { hashSync, compareSync } = require('bcrypt')
 module.exports = ({
     createProducts:(req, res) => {
@@ -124,11 +124,18 @@ module.exports = ({
         })
     },
     filterProducts: (req, res) => {
-        filterProduct(req, (err, data) => {
+        // if(req.body.color){
+        //     req.body.color=req.body.color.split(',') 
+        // }
+        // if(req.body.size){
+        //     req.body.size=req.body.size.toUpperCase()
+        //     req.body.size=req.body.size.split(',')
+        // }
+        filterProduct(req,(err, data) => {
             if (err) {
                 res.json({
                     success: 0,
-                    msg: "Error while searching " + err
+                    msg:"Error "+err
                 })
             }
             if (!data) {
