@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const multer = require('multer')
 
-const {createOrderProducts,getAllOrderProducts,getOrderProductsById,getOrderProductsByVendorId,updateOrderProductsById,deleteOrderProductsById} = require('./orderPro.controller')
+const {createOrderProducts,getAllOrderProducts,getOrderProductsById,getOrderProductsByVendorId,updateOrderProductsById,deleteOrderProductsById,getOrderedProductDetails} = require('./orderPro.controller')
 
 // const auth = require('../../middleware/Auth')
 
@@ -23,6 +23,8 @@ router.get('/orderedproduct',getAllOrderProducts);
 router.get('/orderedproduct/:id',getOrderProductsById);
 
 router.get('/orderedproduct/vendor/:vendorid',getOrderProductsByVendorId);
+
+router.get('/orderedproduct/getreview/:userid/:productid',getOrderedProductDetails);
 
 router.patch('/orderedproduct/:id',upload,updateOrderProductsById);
 

@@ -1,4 +1,4 @@
-const {createOrderProduct,getAllOrderProduct,getOrderProductById,updateOrderProductById,deleteOrderProductById,getOrderProductByVendorId} = require('./orderPro.service')
+const {createOrderProduct,getAllOrderProduct,getOrderProductById,updateOrderProductById,deleteOrderProductById,getOrderProductByVendorId,getOrderedProductDetail} = require('./orderPro.service')
 module.exports = ({
     createOrderProducts:(req, res) => {
         if(req.file){
@@ -65,6 +65,29 @@ module.exports = ({
                 res.json({
                     success: 1,
                     result: data
+                })
+            }
+        })
+    },
+    getOrderedProductDetails: (req, res) => {
+        getOrderedProductDetail(req, (err, data) => {
+            if (err) {
+                res.json({
+                    success: 0,
+                    msg: "Error while fetching by id " + err
+                })
+            }
+            if (data.length == 0) {
+                res.json({
+                    success: 0,
+                    msg: "no records found",
+                    result:0
+                })
+            } else {
+                res.json({
+                    success: 1,
+                    msg:"Product found",
+                    result:1
                 })
             }
         })

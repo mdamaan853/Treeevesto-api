@@ -18,16 +18,16 @@ const upload = multer({
 
 router.post('/product', upload.array('productImages', 12),createProducts);
 
-router.get('/product/all',getAllProducts);
+router.get('/product/',getAllProducts);
+
+router.get('/product/vendor/:id',getProductsByVendorId);
 
 router.get('/product/subcat/:id',getProductsBySubCategory);
 
+router.get('/product/filter',filterProducts);   
+
 router.get('/product/:id',getProductsById);
 
-router.get('/product/',filterProducts);
-// router.post('/product/search/filter',upload.none(),filterProducts);
-
-router.get('/product/vendor/:id',getProductsByVendorId);
 
 router.delete('/product',deleteProductsById);
 

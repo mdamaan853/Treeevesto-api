@@ -109,10 +109,8 @@ module.exports = {
       return res(null, data);
     });
   },
-  // productModel.find({Colour:{ $in: ["red","blue"]}}).exec((err, data) => {
-    // productModel.find({Colour:{ $in:['red']}}).exec((err, data) => {
     filterProduct: (req, res) => {
-        productModel.find().exec((err, data) => {
+        productModel.find(req).exec((err, data) => {
       if (err) return res (err);
       return res(null, data);
     });

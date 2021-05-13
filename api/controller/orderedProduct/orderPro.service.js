@@ -31,6 +31,12 @@ getOrderProductByVendorId: (req, res) => {
         return res(null,data)
     })
 },
+getOrderedProductDetail: (req, res) => {
+    orderedProModel.find({$and:[{productId:req.params.productid},{userId:req.params.userid}]}).exec((err, data) => {
+        if (err) return res(err);
+        return res(null,data)
+    })
+},
 getOrderProductById: (req, res) => {
     orderedProModel.findById(req.params.id).exec((err, data) => {
         if (err) return res(err);
