@@ -32,19 +32,19 @@ const fs = require("fs")
 
 var msg91=require('msg91-sms');
 //Authentication Key 
-var authkey='318367AukJfzDtjdsi60803353P1';
+var authkey='';
 
 //for single number
-var number='7004937515';
+var number='';
  
 //message
 var message='your order have been placed for 100 Chocolates total payable amount RS-2000';
  
 //Sender ID
-var senderid='TRVSTO';
+var senderid='';
  
 //Route
-var route='4';
+var route='';
  
 //Country dial code
 var dialcode='91';
