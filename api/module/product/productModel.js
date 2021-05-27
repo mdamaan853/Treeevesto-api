@@ -266,6 +266,9 @@ Inner_Lining_Fabric: {
     size: {
     type: String,
   },
+    productCode: {
+    type: String,
+  },
   date: {
     type: Date,
   },

@@ -68,6 +68,7 @@ const specTableRouter=require('./api/controller/specTable/specTable.router')
 const orderedProductRouter=require('./api/controller/orderedProduct/orderPro.router')
 const couponRouter=require('./api/controller/coupon/coupon.router')
 const reviewRouter=require('./api/controller/productReview/review.router')
+const cartRouter=require('./api/controller/cart/cart.router')
 
 const PORT=process.env.PORT || 4000
 
@@ -100,6 +101,7 @@ app.use('/',specTableRouter)
 app.use('/',orderedProductRouter)
 app.use('/',couponRouter)
 app.use('/',reviewRouter)
+app.use('/',cartRouter)
 app.get('/ping',(req,res)=>{
 res.send('server is on')
 })

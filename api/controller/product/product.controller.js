@@ -40,9 +40,32 @@ module.exports = {
           msg: "error while fetching " + err,
         });
       } else {
+        var temp1=[];
+        var temp2=[];
+        var temp3=[];
+        data.map(data=> {
+          console.log(data.productCode)
+          if(data.productCode == 'Pro409501'){
+          return(
+            temp1.push(data)
+              )
+            }
+          if(data.productCode == 'Pro488447'){
+          return(
+            temp2.push(data)
+              )
+            }
+          if(data.productCode == 'Pro100936'){
+          return(
+            temp3.push(data)
+              )
+            }
+            // console.log(temp)`
+          })
+          // data=temp1+temp2+temp3
         res.json({
           success: 1,
-          result: data,
+          result:data,
         });
       }
     });
@@ -68,7 +91,7 @@ module.exports = {
       }
     });
   },
-  getProductsById: (req, res) => {
+  getProductsById:(req, res) => {
     getProductById(req, (err, data) => {
       if (err) {
         res.json({
