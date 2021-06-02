@@ -69,6 +69,8 @@ const orderedProductRouter=require('./api/controller/orderedProduct/orderPro.rou
 const couponRouter=require('./api/controller/coupon/coupon.router')
 const reviewRouter=require('./api/controller/productReview/review.router')
 const cartRouter=require('./api/controller/cart/cart.router')
+const sizeChartRouter=require('./api/controller/sizeChart/sizeChart.router')
+const gstRouter=require('./api/controller/gst/gst.router')
 
 const PORT=process.env.PORT || 4000
 
@@ -102,6 +104,8 @@ app.use('/',orderedProductRouter)
 app.use('/',couponRouter)
 app.use('/',reviewRouter)
 app.use('/',cartRouter)
+app.use('/',sizeChartRouter)
+app.use('/',gstRouter)
 app.get('/ping',(req,res)=>{
 res.send('server is on')
 })
@@ -112,4 +116,3 @@ app.listen(PORT, () => {
 // httpsServer.listen(PORT, () => {
 //     console.log(`HTTPS Server running on port ${PORT}`);
 // });
-

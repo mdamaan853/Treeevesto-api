@@ -1,4 +1,4 @@
-const {createUser, getAllUser,getUserById,loginUser} = require('./user.service')
+const {createUser, getAllUser,getUserById,loginUser,updateUser,deleteUser} = require('./user.service')
 const jwt = require('jsonwebtoken')
 const { hashSync, compareSync } = require('bcrypt')
 module.exports = ({
@@ -101,5 +101,35 @@ getAllUsers: (req, res) => {
                 })
             }
         })
-    }
+    },
+    updateUsers: (req, res) => {
+        updateUser(req, (err, data) => {
+                if (err) {
+                    res.json({
+                        success: 0,
+                        msg: "error while update" + err
+                    })
+                } else {
+                    res.json({
+                        success: 1,
+                        result: data
+                    })
+                }
+            })
+        },
+        deleteUsers: (req, res) => {
+            deleteUser(req, (err, data) => {
+                    if (err) {
+                        res.json({
+                            success: 0,
+                            msg: "error while fetching " + err
+                        })
+                    } else {
+                        res.json({
+                            success: 1,
+                            result: data
+                        })
+                    }
+                })
+            },
 })

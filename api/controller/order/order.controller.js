@@ -1,3 +1,4 @@
+var nodemailer = require('nodemailer');
 const { createOrder,getAllOrder,getOrderById,getOrderByUserId,deleteOrderById,updateOrderById} = require('./order.service')
 module.exports = ({
     createOrders: (req, res) => {
@@ -64,7 +65,7 @@ module.exports = ({
                     success: 0,
                     msg: "no records found"
                 })
-            } else {
+               } else {
                 res.json({
                     success: 1,
                     result: data
@@ -73,6 +74,31 @@ module.exports = ({
         })
     },
     updateOrdersByUserId: (req, res) => {
+        if(req.body.emailContent){
+            console.log(req.body.emailContent)
+      var transporter =nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'mr.devil27102001@gmail.com',
+          pass: 'Idontthicksoo'
+        }
+      });
+      
+      var mailOptions = {
+        from: 'mr.devil27102001@gmail.com',
+        to: 'mdamaan853@gmail.com',
+        subject:'order Placed...',
+        html:`${req.body.emailContent}`
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+        }
         updateOrderById(req, (err, data) => {
             if (err) {
                 res.json({

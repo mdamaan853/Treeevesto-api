@@ -43,32 +43,12 @@ module.exports = {
         var temp1=[];
         var temp2=[];
         var temp3=[];
-        data.map(data=> {
-          console.log(data.productCode)
-          if(data.productCode == 'Pro409501'){
-          return(
-            temp1.push(data)
-              )
-            }
-          if(data.productCode == 'Pro488447'){
-          return(
-            temp2.push(data)
-              )
-            }
-          if(data.productCode == 'Pro100936'){
-          return(
-            temp3.push(data)
-              )
-            }
-            // console.log(temp)`
-          })
-          // data=temp1+temp2+temp3
         res.json({
           success: 1,
           result:data,
         });
       }
-    });
+    })
   },
   getProductsBySubCategory: (req, res) => {
     getProductsBySubCategory(req, (err, data) => {
@@ -134,7 +114,6 @@ module.exports = {
     });
   },
   filterProducts: (req, res) => {
-    console.log("q",req.query.size)
     var filterColor = "";
     var filterSize = "";
     var filterPrizeFrom = "";
@@ -161,13 +140,21 @@ module.exports = {
       filterPrizeFrom!= "" &&
       filterCat != ""
     ) {
+      // var flterParameter = {
+      //   $and: [
+      //     { colour: filterColor },
+      //         { size: filterSize },
+      //         { sellingPrice: { $lte: filterPrizeTo, $gte: filterPrizeFrom } },
+      //         { catId: filterCat }
+      //   ],
+      // };
       var flterParameter = {
         $and: [
           { colour: filterColor },
           {
             $and: [
               { size: filterSize },
-              { sellingPrice: { $lt: filterPrizeTo, $gt: filterPrizeFrom } },
+              { sellingPrice: { $lte: filterPrizeTo, $gte: filterPrizeFrom } },
               { catId: filterCat },
             ],
           },
@@ -182,7 +169,7 @@ module.exports = {
       var flterParameter = {
         $and: [
           { catId: filterCat },
-          { sellingPrice: { $lt: filterPrizeTo, $gt: filterPrizeFrom } },
+          { sellingPrice: { $lte: filterPrizeTo, $gte: filterPrizeFrom } },
         ],
       };
     } else if (
@@ -196,7 +183,7 @@ module.exports = {
           { colour: filterColor },
           {
             $and: [
-              { sellingPrice: { $lt: filterPrizeTo, $gt: filterPrizeFrom } },
+              { sellingPrice: { $lte: filterPrizeTo, $gte: filterPrizeFrom } },
               { catId: filterCat },
             ],
           },
@@ -227,7 +214,7 @@ module.exports = {
       var flterParameter = {
         $and: [
           { colour: filterColor },
-          { sellingPrice: { $lt: filterPrizeTo, $gt: filterPrizeFrom } },
+          { sellingPrice: { $lte: filterPrizeTo, $gte: filterPrizeFrom } },
         ],
       };
     } else if (
@@ -242,7 +229,7 @@ module.exports = {
           {
             $and: [
               { size: filterSize },
-              { sellingPrice: { $lt: filterPrizeTo, $gt: filterPrizeFrom }},
+              { sellingPrice: { $lte: filterPrizeTo, $gte: filterPrizeFrom }},
             ],
           },
         ],
@@ -256,7 +243,7 @@ module.exports = {
       var flterParameter = {
         $and: [
           { size: filterSize },
-          { sellingPrice: { $lt: filterPrizeTo, $gt: filterPrizeFrom } },
+          { sellingPrice: { $lte: filterPrizeTo, $gte: filterPrizeFrom } },
         ],
       };
     } else if (
@@ -273,7 +260,7 @@ module.exports = {
       filterCat == ""
     ) {
       var flterParameter = {
-        sellingPrice: { $lt: filterPrizeTo, $gt: filterPrizeFrom },
+        sellingPrice: { $lte: filterPrizeTo, $gte: filterPrizeFrom },
       };
     } else if (
       filterColor == "" &&

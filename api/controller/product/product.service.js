@@ -92,7 +92,7 @@ module.exports = {
     });
   },
   getAllProduct: (req, res) => {
-    productModel.find().exec((err, data) => {
+    productModel.find().sort({_id:-1}).exec((err, data) => {
       if (err) return res (err);
       return res(null, data);
     });

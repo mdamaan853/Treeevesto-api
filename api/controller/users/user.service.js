@@ -38,5 +38,21 @@ getUserById: (req, res) => {
         };
         return res(null,data)
     })
+},
+updateUser: (req, res) => {
+    userModel.updateOne({_id:req.params.id},{$set:req.body}).exec((err, data) => {
+        if (err){
+            return res(err);
+        };
+        return res(null,data)
+    })
+},
+deleteUser: (req, res) => {
+    userModel.deleteOne({_id:req.params.id}).exec((err, data) => {
+        if (err){
+            return res(err);
+        };
+        return res(null,data)
+    })
 }
 })
