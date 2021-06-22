@@ -110,11 +110,17 @@ module.exports = {
     });
   },
     filterProduct: (req, res) => {
-        productModel.find(req).exec((err, data) => {
+        productModel.find(req[0]).sort(req[1]).exec((err, data) => {
       if (err) return res (err);
       return res(null, data);
     });
   },
+  sortProduct: (req, res) => {
+    productModel.find().sort(req).exec((err, data) => {
+  if (err) return res (err);
+  return res(null, data);
+});
+},
   getProductByVendorId: (req, res) => {
     productModel.find({ vendorId: req.params.id }).exec((err, data) => {
       if (err) return res (err);

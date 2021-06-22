@@ -7,6 +7,7 @@ const {
   getProductByVendorId,
   deleteProductById,
   filterProduct,
+  sortProduct
 } = require("./product.service");
 module.exports = {
   createProducts: (req, res) => {
@@ -40,9 +41,6 @@ module.exports = {
           msg: "error while fetching " + err,
         });
       } else {
-        var temp1=[];
-        var temp2=[];
-        var temp3=[];
         res.json({
           success: 1,
           result:data,
@@ -52,6 +50,42 @@ module.exports = {
   },
   getProductsBySubCategory: (req, res) => {
     getProductsBySubCategory(req, (err, data) => {
+      if (err) {
+        res.json({
+          success: 0,
+          msg: "Error while fetching by id " + err,
+        });
+      }
+      if (!data) {
+        res.json({
+          success: 0,
+          msg: "no records found",
+        });
+      } else {
+        res.json({
+          success: 1,
+          result: data,
+        });
+      }
+    });
+  },
+  sortProducts:(req, res) => {
+    if(req.query.sort =="latest"){
+      var sort={date:-1}
+    }
+    else if(req.query.sort =="popular"){
+      var sort={popular:-1}
+    }
+    else if(req.query.sort =="low"){
+      var sort={sellingPrice:1}
+    }
+    else if(req.query.sort =="high"){
+      var sort={popular:-1}
+    }
+    else{
+var sort={}
+    }
+    sortProduct(sort,(err, data) => {
       if (err) {
         res.json({
           success: 0,
@@ -114,11 +148,32 @@ module.exports = {
     });
   },
   filterProducts: (req, res) => {
+
     var filterColor = "";
     var filterSize = "";
     var filterPrizeFrom = "";
     var filterPrizeTo = "";
     var filterCat = "";
+
+    if(req.query.sort){
+      if(req.query.sort =="latest"){
+              var sort={date:-1}
+            }
+            else if(req.query.sort =="popular"){
+              var sort={popular:-1}
+            }
+            else if(req.query.sort =="low"){
+              var sort={sellingPrice:1}
+            }
+            else if(req.query.sort =="high"){
+              var sort={popular:-1}
+            }
+            else{
+          var sort={}
+            }
+    }else{
+      console.log('not found')
+    }
     if(req.query.color){
       filterColor=req.query.color.split(",") 
     }
@@ -293,10 +348,12 @@ module.exports = {
     } else {
       var flterParameter = {};
     }
-     req={Colour:req.query.color}
-    console.log(flterParameter);
-    // console.log(req.params)
-    filterProduct(flterParameter, (err, data) => {
+    //  req={Colour:req.query.color}
+    // console.log(flterParameter);
+
+    var req=[flterParameter,sort]
+    
+    filterProduct(req,(err, data) => {
       if (err) {
         res.json({
           success: 0,

@@ -186,6 +186,9 @@ Inner_Lining_Fabric: {
     type: String,
     required: true,
   },
+  popular: {
+    type: String
+  },
   startSale: {
     type: String,
   },
