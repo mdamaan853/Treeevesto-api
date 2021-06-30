@@ -1,4 +1,5 @@
 const express = require('express');
+var mongodb = require("mongodb")
 const bodyParser=require('body-parser')
 const app = express()
 const cors = require('cors')
@@ -232,6 +233,18 @@ app.use('/upload/banner_img/:id',(req,res)=> res.sendFile(__dirname + '/upload/b
 app.use('/upload/cardImg/:id',(req,res)=> res.sendFile(__dirname + '/upload/cardImg/'+req.params.id));
 
 // app.use(express.static('upload'))
+
+app.get('*',(req,res,next)=>{
+var id=mongodb.ObjectID.isValid(req.params.id)
+if(id){
+next();
+}else{
+    res.json({
+        success:0,
+        msg:"enter valid id"
+    })
+}
+})
 
 app.use('/',catRouter)
 app.use('/',vendorRouter)
